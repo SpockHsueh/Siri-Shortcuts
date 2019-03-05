@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IntentsUI
 
 enum DrinkType: String {
     case water
@@ -27,8 +28,20 @@ class ViewController: UIViewController {
         
         buttonWater.setTitle("Glass of Water (\(currentCount(for: .water)))", for: .normal)
         buttonCoffee.setTitle("Cup of Coffee (\(currentCount(for: .coffee)))", for: .normal)
-        buttonTea.setTitle("Cup of Tea \(currentCount(for: .tea)))", for: .normal)
+        buttonTea.setTitle("Cup of Tea (\(currentCount(for: .tea)))", for: .normal)
     }
+    
+    @IBAction func addShortcutWasTapped(_ sender: Any) {
+        let activityTypeName = "com.spock.SiriShortcuts.drinkCount"
+        let activity = NSUserActivity(activityType: activityTypeName)
+        
+        let shortcut = INShortcut(userActivity: activity)
+        let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
+        
+    }
+    
     
     @IBAction func glassOfWaterButtonTapped(_ sender: Any?) {
         increment(for: .water)
@@ -84,5 +97,16 @@ extension ViewController {
         view.userActivity = activity
         activity.becomeCurrent()
     }
+}
+
+extension ViewController:INUIAddVoiceShortcutViewControllerDelegate {
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
