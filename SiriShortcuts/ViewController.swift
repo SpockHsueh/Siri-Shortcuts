@@ -31,16 +31,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func glassOfWaterButtonTapped(_ sender: Any?) {
+        increment(for: .water)
         buttonWater.setTitle("Glass of Water (\(currentCount(for: .water)))", for: .normal)
+        self.donateUserActivity(with: .water)
     }
     
     @IBAction func cupOfCoffeeButtonTapped(_ sender: Any?) {
+        increment(for: .coffee)
         buttonCoffee.setTitle("Cup of Coffee (\(currentCount(for: .coffee)))", for: .normal)
+        self.donateUserActivity(with: .coffee)
     }
     
     
     @IBAction func cupOfTeaButtonTapped(_ sender: Any?) {
+        increment(for: .tea)
         buttonTea.setTitle("Cup of Tea (\(currentCount(for: .tea)))", for: .normal)
+        self.donateUserActivity(with: .tea)
     }
     
     private func increment(for drink: DrinkType) {
@@ -74,6 +80,7 @@ extension ViewController {
         activity.userInfo = ["drinkType": type.rawValue]
         activity.isEligibleForSearch = true
         activity.isEligibleForPrediction = true
+        activity.suggestedInvocationPhrase = "Drank \(type.rawValue)"
         view.userActivity = activity
         activity.becomeCurrent()
     }
