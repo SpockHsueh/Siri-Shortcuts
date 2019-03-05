@@ -22,6 +22,7 @@
 		8E1D3B03222C134300A4AF59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E1D3B06222C134300A4AF59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E1D3B08222C134300A4AF59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1D3B0E222C23B300A4AF59 /* SiriShortcuts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriShortcuts.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +55,7 @@
 		8E1D3AFB222C133D00A4AF59 /* SiriShortcuts */ = {
 			isa = PBXGroup;
 			children = (
+				8E1D3B0E222C23B300A4AF59 /* SiriShortcuts.entitlements */,
 				8E1D3AFC222C133D00A4AF59 /* AppDelegate.swift */,
 				8E1D3AFE222C133E00A4AF59 /* ViewController.swift */,
 				8E1D3B00222C133F00A4AF59 /* Main.storyboard */,
@@ -96,6 +98,11 @@
 				TargetAttributes = {
 					8E1D3AF8222C133B00A4AF59 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -282,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SiriShortcuts/SiriShortcuts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26WBMBDFCZ;
 				INFOPLIST_FILE = SiriShortcuts/Info.plist;
@@ -300,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SiriShortcuts/SiriShortcuts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26WBMBDFCZ;
 				INFOPLIST_FILE = SiriShortcuts/Info.plist;
