@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I just drank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHz-ha-eNe">
-                                <rect key="frame" x="135.5" y="143.5" width="104.5" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易畫面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHz-ha-eNe">
+                                <rect key="frame" x="147.5" y="61" width="80" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.49411764705882355" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="24" minY="24" maxX="24" maxY="24"/>
-                                        <state key="normal" title="Glass of Water (0)">
+                                        <state key="normal" title="買黃金 (0)">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -43,7 +43,7 @@
                                         <color key="backgroundColor" red="1" green="0.53333333333333333" blue="0.0078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="24" minY="24" maxX="24" maxY="24"/>
-                                        <state key="normal" title="Cup of Coffee (0)">
+                                        <state key="normal" title="證卷下單 (0)">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -55,7 +55,7 @@
                                         <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="24" minY="24" maxX="24" maxY="24"/>
-                                        <state key="normal" title="Cup of Tea (0)">
+                                        <state key="normal" title="選擇權下單 (0)">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -64,10 +64,17 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h8-nz-1on">
-                                <rect key="frame" x="142" y="515" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Shortcut"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h8-nz-1on">
+                                <rect key="frame" x="107.5" y="496" width="160" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0Qq-0b-rag"/>
+                                    <constraint firstAttribute="width" constant="160" id="Xgj-2g-BGY"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Shortcut" image="macos-high-sierra-siri-app-icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="addShortcutWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ogi-TG-zx6"/>
                                 </connections>
@@ -77,9 +84,11 @@
                         <constraints>
                             <constraint firstItem="DXX-0K-kHq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="8aR-7S-9p6"/>
                             <constraint firstItem="cHz-ha-eNe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EQo-sa-WON"/>
-                            <constraint firstItem="DXX-0K-kHq" firstAttribute="top" secondItem="cHz-ha-eNe" secondAttribute="bottom" priority="999" constant="50" id="Huv-i5-Yrb"/>
+                            <constraint firstItem="DXX-0K-kHq" firstAttribute="top" secondItem="cHz-ha-eNe" secondAttribute="bottom" priority="999" constant="132.5" id="Huv-i5-Yrb"/>
+                            <constraint firstItem="1h8-nz-1on" firstAttribute="top" secondItem="DXX-0K-kHq" secondAttribute="bottom" constant="50" id="PI7-gw-cc5"/>
                             <constraint firstItem="DXX-0K-kHq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q94-9D-EL1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DXX-0K-kHq" secondAttribute="trailing" constant="24" id="QDp-nk-tIZ"/>
+                            <constraint firstItem="1h8-nz-1on" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RVr-KM-8ga"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DXX-0K-kHq" secondAttribute="bottom" constant="24" id="nbj-dF-4oi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -95,4 +104,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="macos-high-sierra-siri-app-icon" width="30" height="30"/>
+    </resources>
 </document>

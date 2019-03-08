@@ -9,10 +9,10 @@
 import UIKit
 import IntentsUI
 
-enum DrinkType: String {
-    case water
-    case coffee
-    case tea
+enum TradeType: String {
+    case golden = "黃金買賣"
+    case stock = "證卷交易"
+    case options = "選擇權交易"
 }
 
 class ViewController: UIViewController {
@@ -26,15 +26,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buttonWater.setTitle("Glass of Water (\(currentCount(for: .water)))", for: .normal)
-        buttonCoffee.setTitle("Cup of Coffee (\(currentCount(for: .coffee)))", for: .normal)
-        buttonTea.setTitle("Cup of Tea (\(currentCount(for: .tea)))", for: .normal)
+        buttonWater.setTitle("買黃金 (\(currentCount(for: .golden)))", for: .normal)
+        buttonCoffee.setTitle("證卷下單 (\(currentCount(for: .stock)))", for: .normal)
+        buttonTea.setTitle("選擇權下單 (\(currentCount(for: .options)))", for: .normal)
     }
     
     @IBAction func addShortcutWasTapped(_ sender: Any) {
         let activityTypeName = "com.spock.SiriShortcuts.drinkCount"
         let activity = NSUserActivity(activityType: activityTypeName)
-        
+        activity.suggestedInvocationPhrase = "說一句話代表交易畫面的捷徑"
         let shortcut = INShortcut(userActivity: activity)
         let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
         vc.delegate = self
@@ -44,41 +44,42 @@ class ViewController: UIViewController {
     
     
     @IBAction func glassOfWaterButtonTapped(_ sender: Any?) {
-        increment(for: .water)
-        buttonWater.setTitle("Glass of Water (\(currentCount(for: .water)))", for: .normal)
-        self.donateUserActivity(with: .water)
+        increment(for: .golden)
+        buttonWater.setTitle("買黃金 (\(currentCount(for: .golden)))", for: .normal)
+        self.donateUserActivity(with: .golden)
     }
     
     @IBAction func cupOfCoffeeButtonTapped(_ sender: Any?) {
-        increment(for: .coffee)
-        buttonCoffee.setTitle("Cup of Coffee (\(currentCount(for: .coffee)))", for: .normal)
-        self.donateUserActivity(with: .coffee)
+        increment(for: .stock)
+        buttonCoffee.setTitle("證卷下單 (\(currentCount(for: .stock)))", for: .normal)
+        self.donateUserActivity(with: .stock)
     }
     
     
     @IBAction func cupOfTeaButtonTapped(_ sender: Any?) {
-        increment(for: .tea)
-        buttonTea.setTitle("Cup of Tea (\(currentCount(for: .tea)))", for: .normal)
-        self.donateUserActivity(with: .tea)
+        increment(for: .options)
+        buttonTea.setTitle("選擇權下單 (\(currentCount(for: .options)))", for: .normal)
+        self.donateUserActivity(with: .options)
     }
     
-    private func increment(for drink: DrinkType) {
+    private func increment(for drink: TradeType) {
         let updatedValue = self.currentCount(for: drink) + 1
         currentDefaults.set(updatedValue, forKey: drink.rawValue)
     }
     
-    private func currentCount(for drink: DrinkType) -> Int {
+    private func currentCount(for drink: TradeType) -> Int {
         return currentDefaults.integer(forKey: drink.rawValue)
     }
     
     // MARK: Public Action
-    public func didDrank(_ drank: DrinkType) {
-        switch drank {
-        case .water:
+    // Siri shortcuts 導入的接口
+    public func selectTradeType(_ trade: TradeType) {
+        switch trade {
+        case .golden:
             self.glassOfWaterButtonTapped(.none)
-        case .coffee:
+        case .stock:
             self.cupOfCoffeeButtonTapped(.none)
-        case .tea:
+        case .options:
             self.cupOfTeaButtonTapped(.none)
         }
     }
@@ -86,14 +87,14 @@ class ViewController: UIViewController {
 
 // MARK: Donate User Activity due to DrinkType
 extension ViewController {
-    func donateUserActivity(with type: DrinkType) {
+    func donateUserActivity(with type: TradeType) {
         let activityTypeName = "com.spock.SiriShortcuts.drinkCount"
         let activity = NSUserActivity(activityType: activityTypeName)
-        activity.title = "I just drank \(type.rawValue)"
-        activity.userInfo = ["drinkType": type.rawValue]
+        activity.title = "交易畫面進行 \(type.rawValue)"
+        activity.userInfo = ["TradeType": type.rawValue]
         activity.isEligibleForSearch = true
         activity.isEligibleForPrediction = true
-        activity.suggestedInvocationPhrase = "Drank \(type.rawValue)"
+        activity.suggestedInvocationPhrase = "說一句話代表 \(type.rawValue) 的捷徑"
         view.userActivity = activity
         activity.becomeCurrent()
     }
