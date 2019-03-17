@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         let vc = INUIAddVoiceShortcutViewController(shortcut: shortcut)
         vc.delegate = self
         present(vc, animated: true, completion: nil)
-        
     }
     
     
@@ -85,7 +84,7 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: Donate User Activity due to DrinkType
+// MARK: Donate User Activity due to TradeType
 extension ViewController {
     func donateUserActivity(with type: TradeType) {
         let activityTypeName = "com.spock.SiriShortcuts.drinkCount"

@@ -32,14 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // Check for drinkType which we passed while donating userActivity
-            guard let drinkTypeRawValue = userActivity.userInfo?["drinkType"] as? String, let drinkType = TradeType(rawValue: drinkTypeRawValue) else {
+            guard let drinkTypeRawValue = userActivity.userInfo?["TradeType"] as? String, let tradeType = TradeType(rawValue: drinkTypeRawValue) else {
                 return false
             }
             
-            print("Drink activity for \(drinkType)")
+            print("Drink activity for \(tradeType)")
             
             // pass argument to viewController for increment counter
-            viewController.selectTradeType(drinkType)
+            viewController.selectTradeType(tradeType)
             
             return true
         
